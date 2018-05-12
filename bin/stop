@@ -1,0 +1,13 @@
+#! /bin/bash
+
+case "$1" in
+'redis')
+brew services stop redis
+;;
+'pg')
+brew services stop postgresql
+;;
+'dc')
+docker stop $(docker ps -q)
+;;
+esac

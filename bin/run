@@ -1,0 +1,10 @@
+#! /bin/bash
+
+case "$1" in
+'redis')
+brew services start redis
+;;
+'pg')
+brew services start postgresql
+;;
+esac
