@@ -31,4 +31,7 @@
 \setenv LESS '-iMFXSx4R'
 \setenv EDITOR 'vim'
 
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+
 \unset QUIET
