@@ -81,7 +81,7 @@ alias dc="docker-compose"
 # PROMPT
 # get the name of the branch or commit (short SHA) we are on
 function git_prompt_info() {
-  ref=$(git symbolic-ref --short HEAD 2> /dev/null) || ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  ref=$(git rev-parse --abbrev-ref HEAD 2> /dev/null) || return
   echo "${ref}"
 }
 
