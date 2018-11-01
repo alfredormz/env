@@ -1,12 +1,13 @@
 #! /usr/local/bin/zsh
 
 export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 autoload -Uz colors
 colors
 
 # VARIABLES
-
 RED="%{$fg[red]%}"
 GREEN="%{$fg[green]%}"
 BLUE="%{$fg[blue]%}"
