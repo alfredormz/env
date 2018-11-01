@@ -58,9 +58,10 @@ bindkey -M viins '^A' vi-beginning-of-line
 bindkey -M viins '^E' vi-end-of-line
 
 # Global
-alias reload="source ~/.zshrc; clear"
+alias reload="source ~/.zshrc"
 alias quit="exit"
 alias ll="ls -lsah"
+alias zshrc="vim ~/.zshrc && reload"
 
 if [ "`uname`" = 'Linux' ]; then
   alias ls="ls --color=always"
