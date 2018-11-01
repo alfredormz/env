@@ -112,15 +112,6 @@ zle -N zle-keymap-select
 # does not delete characters. This fixes that.
 bindkey "^?" backward-delete-char
 
-# PATH
-
-# Custom binaries
-export PATH=~/bin:$PATH
-
-# Homebrew's bin path
-export PATH=/usr/local/sbin:/usr/local/bin:$PATH
-export PATH=$HOME/anaconda3/bin:$PATH
-
 setopt interactivecomments
 
 # Make `less` quit if the output has only one page (-FX).
@@ -131,4 +122,12 @@ eval "$(rbenv init -)"
 
 # Load secrets.
 if [[ -f ~/.zshrc_private ]]; then; . ~/.zshrc_private; fi
+
+# Custom binaries
+export PATH=~/bin:$PATH
+
+# Homebrew's bin path
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.vim/pack/minpac/start/fzf/bin
+export PATH=$HOME/anaconda3/bin:$PATH
 export PATH="/usr/local/opt/node@8/bin:$PATH"
