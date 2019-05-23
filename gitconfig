@@ -29,7 +29,8 @@
   mnemonicprefix = true 
 [commit]
   verbose = true
-
+[fetch]
+  prune = true
 [core]
 	excludesfile = /Users/alfredormz/.gitignore
 [filter "lfs"]
