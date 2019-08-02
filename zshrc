@@ -70,15 +70,6 @@ else
   alias ls="ls -G"
 fi
 
-# Tmux
-alias t="tmux"
-alias ta="tmux attach"
-alias ts="tmux new-session -s"
-
-# Docker
-alias d="docker"
-alias dc="docker-compose"
-
 # PROMPT
 # get the name of the branch or commit (short SHA) we are on
 function git_prompt_info() {
@@ -118,8 +109,6 @@ setopt interactivecomments
 # Make `less` quit if the output has only one page (-FX).
 # Make `less` parse ansii colors (-R).
 export LESS="-RFX"
-
-eval "$(rbenv init -)"
 
 # Load secrets.
 if [[ -f ~/.zshrc_private ]]; then; . ~/.zshrc_private; fi
