@@ -62,6 +62,7 @@ alias reload="source ~/.zshrc"
 alias quit="exit"
 alias ll="ls -lsah"
 alias zshrc="vim ~/.zshrc && reload"
+alias ag="rg"
 
 if [ "`uname`" = 'Linux' ]; then
   alias ls="ls --color=always"
