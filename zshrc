@@ -120,3 +120,10 @@ export PATH=~/bin:$PATH
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$HOME/.vim/pack/minpac/start/fzf/bin:$PATH
 export FZF_DEFAULT_COMMAND='rg --files | sort'
+export NVM_DIR="$HOME/.nvm"
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+eval "$(rbenv init -)"
+
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
