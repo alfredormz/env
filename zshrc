@@ -4,31 +4,6 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-autoload -Uz colors
-colors
-
-# VARIABLES
-RED="%{$fg[red]%}"
-GREEN="%{$fg[green]%}"
-BLUE="%{$fg[blue]%}"
-GREY="%{$fg[grey]%}"
-MAGENTA="%{$fg[magenta]%}"
-CYAN="%{$fg[cyan]%}"
-WHITE="%{$fg[white]%}"
-YELLOW="%{$fg[yellow]%}"
-BLACK="%{$fg[black]%}"
-
-BRED="%{$fg_bold[red]%}"
-BGREEN="%{$fg_bold[green]%}"
-BBLUE="%{$fg_bold[blue]%}"
-BGREY="%{$fg_bold[grey]%}"
-BMAGENTA="%{$fg_bold[magenta]%}"
-BCYAN="%{$fg_bold[cyan]%}"
-BWHITE="%{$fg_bold[white]%}"
-BYELLOW="%{$fg_bold[yellow]%}"
-
-RESET="%{$reset_color%}"
-
 setopt null_glob
 
 # Keep lots of history within the shell and save it to ~/.zsh_history:
@@ -70,36 +45,6 @@ else
   alias ls="ls -G"
 fi
 
-# PROMPT
-# get the name of the branch or commit (short SHA) we are on
-function git_prompt_info() {
-  ref=$(git rev-parse --abbrev-ref HEAD 2> /dev/null) || return
-  echo "${ref}"
-}
-
-# PS1
-setopt promptsubst
-
-local full_path='${GREEN}%c'
-local git_stuff='${RESET}$(git_prompt_info)'
-
-local context="${full_path} ${git_stuff}"
-local insert_dollar_sign="%B$%b "
-local normal_dollar_sign="%B${YELLOW}\$${RESET}%b "
-
-# Change the color of the $ when in normal mode.
-function zle-line-init zle-keymap-select {
-  if [ "$KEYMAP" = "vicmd" ]; then
-    PROMPT="$context $normal_dollar_sign"
-  else
-    PROMPT="$context $insert_dollar_sign"
-  fi
-
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
 # By default in vi, the backspace when entering insert mode after a `c*` command
 # does not delete characters. This fixes that.
 bindkey "^?" backward-delete-char
@@ -116,14 +61,18 @@ if [[ -f ~/.zshrc_private ]]; then; . ~/.zshrc_private; fi
 # Custom binaries
 export PATH=~/bin:$PATH
 
-# Homebrew's bin path
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$HOME/.vim/pack/minpac/start/fzf/bin:$PATH
 export FZF_DEFAULT_COMMAND='rg --files | sort'
-export NVM_DIR="$HOME/.nvm"
 export ERL_AFLAGS="-kernel shell_history enabled"
+export ASDF_DIR=~/.asdf
 
-eval "$(rbenv init -)"
+source $ASDF_DIR/asdf.sh
 
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# Add Visual Studio Code (code)
+export PATH=$PATH:$HOME/Applications/Visual\ Studio\ Code.app/Contents/Resourses/app/bin
